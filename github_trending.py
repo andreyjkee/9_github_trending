@@ -19,7 +19,7 @@ def get_trending_repositories(top_size=20):
     response_body = response.json()
     return response_body
 
-def get_open_issues_amount(repo_owner, repo_name):
+def get_open_issues_list(repo_owner, repo_name):
     response = requests.get(API_BASE+'repos/{0}/{1}/issues'.format(repo_owner, repo_name), {
         'state': 'open'
     })
@@ -37,6 +37,7 @@ def pretty_print_repository_info(repo):
 def pretty_print_issues(issues):
     if type(issues) != list:
         return
+    print('Open issues amount: {0}'.format(len(issues)))
     for issue in issues:
         print('\t\tIssue title: {0}'.format(issue['title']))
         print('\t\tIssue url: {0}'.format(issue['url']))
@@ -50,5 +51,5 @@ if __name__ == '__main__':
     if repositories:
         for repo in repositories['items']:
             pretty_print_repository_info(repo)
-            issues = get_open_issues_amount(repo['owner']['login'], repo['name'])
+            issues = get_open_issues_list(repo['owner']['login'], repo['name'])
             pretty_print_issues(issues)
