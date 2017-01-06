@@ -7,7 +7,7 @@ import dateutil.parser
 
 API_BASE = 'https://api.github.com/'
 
-def get_trending_repositories(top_size=20):
+def get_trending_repositories(top_size):
     week_ago_iso8601 = (datetime.datetime.now() - datetime.timedelta(days=7)).replace(microsecond=0).isoformat()
     response = requests.get(API_BASE+'search/repositories', {
         'q': 'created:>{0}'.format(week_ago_iso8601),
