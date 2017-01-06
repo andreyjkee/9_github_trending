@@ -1,7 +1,13 @@
 # Github Trends
 
-[TODO. There will be project description]
+Python script for get top 20 starred repositories for last week from github. Script using [github API](https://developer.github.com/v3/)
 
-# Project Goals
+Usage:
+```sh
+python github_trending.py
+```
 
-The code is written for educational purposes. Training course for web-developers - [DEVMAN.org](https://devman.org)
+Usage (with specific count):
+```sh
+python github_trending.py -c 10
+```
